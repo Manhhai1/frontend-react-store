@@ -1,0 +1,83 @@
+.footer-page{
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    h5{
+        margin-top: 20px;
+        font-size: 0.9em;
+        font-weight: 600;
+    }
+    p{
+        font-size: 0.8em;
+        line-height: 80%;
+    }
+    span{
+        &:hover{
+            border-bottom: 1px solid #555;
+            cursor: pointer;
+        }
+    }
+    .item{
+        width: 20%;
+        height: 250px;
+    }
+    .company{
+        img{
+            width: 80%;
+            margin-left: 10px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .phone{
+            display: flex;
+            height: 20px;
+            text-align: center;
+            align-items: center;
+        }
+        .mail{
+            margin-top: 5px;
+            display: flex;
+            height: 20px;
+            text-align: center;
+            align-items: center;
+        }
+    }
+    .folow{
+        background-color: #f9f9f9;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        .icons{
+            display: flex;
+            height: 60px;
+            .icon{
+                margin-left: 10px;
+            }
+        }
+        .register{
+            display: flex;
+            height: 40px;
+            input{
+                width: 60%;
+            }
+            button{
+                background-color: #000000
+            }
+        }
+    }
+}
+.ft{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 40px;
+    width: 100%;
+    background-color: #000000;
+    text-align: center;
+    align-items: center;
+    color: #fff;
+    padding-top: 8px;
+}

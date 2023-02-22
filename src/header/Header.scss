@@ -1,0 +1,102 @@
+.header-container-ctmz{
+    height: 80px;
+    padding-top: 10px;
+    z-index: 1;
+    position: relative;
+    cursor: pointer;
+    .menu-ctmz{
+        height: 60px;
+        width: 100%;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: #fff;
+        .logo{
+            width: 16%;
+            height: 60px;
+           
+            .img-logo{
+                margin-top: 10px;
+                text-align: center;
+                align-items: center;
+            }
+        }
+        .list-menu-ctmz{
+            list-style-type: none;
+            width: 65%;
+            display: flex;
+            justify-content: space-around;
+            height: auto;
+            align-items: center;
+            margin-bottom: 0;
+            
+            .item-menu-ctmz{
+                padding: 10px;
+                font-weight: 600;
+                &:hover{
+                    cursor: pointer;
+                }
+        }
+        .introduce{
+            position: relative;
+            &:hover{
+                .list-introduce{
+                    display: block;
+                }
+            }
+            .list-introduce{
+                opacity: 1.5;
+                background-color: #fff;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                position: absolute;
+                margin-top: 10px;
+                width: 200px;
+                display: none;
+               
+                font-size: 0.9rem;
+                list-style-type: none;
+                float: left;
+                padding-bottom: 15px;
+                li{
+                    line-height: 1.6;
+                    padding-left: 20px;
+                    text-align:left;
+                    padding-top: 10px;
+                    display: block;
+                    &:hover{
+                        
+                        span{
+                            padding-bottom: 2px;
+                            border-bottom: 1px solid #555;
+                        }
+                    }
+                }
+            
+            }
+        }
+    }
+        .left-header{
+            width: 25%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            .search{
+                width: 130px;
+                display: flex;
+                p{
+
+                }
+            }
+            .mg{
+                margin-left:20px;
+                height: 60px;
+                display: flex;
+                text-align: center;
+                align-items: center;
+            }
+        }
+    }
+   
+}

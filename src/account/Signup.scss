@@ -1,0 +1,26 @@
+.sign-up{
+    .content{
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        .item{
+            margin-top: 20px;
+            width: 30%;
+        }
+        .btn-register{
+            height: 40px;
+            background-color: #000;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        p{
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

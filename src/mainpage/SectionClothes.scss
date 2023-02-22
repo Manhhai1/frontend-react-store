@@ -1,0 +1,63 @@
+.container-section-clothes{
+    width: 100%;
+    padding-left: 6%;
+    padding-right: 6%;
+    height: 600px;
+    margin-top: 30px;
+    display: flex;
+    cursor: pointer;
+    .suit{
+        width: 50%;
+        height: 600px;
+        background-size:cover;
+        background-position: center;
+        &:hover{
+            transform: scale(1.1);
+            transition: all 1s;        
+        }
+    }
+   .clothes-parent{
+       display: flex;
+       flex-direction: column;
+       height: 100%;
+       width: 50%;
+     
+        .clothes{
+            width: 100%;
+            display: flex;
+            height: 50%;
+       
+            .jacket{
+                width: 50%;
+                margin: 0 5px  5px 10px;
+                background-size:cover;
+                background-position: center;
+                &:hover{
+                    transform: scale(1.1);
+                    transition: all 1s;        
+                }
+            }
+            .sweater{
+                width: 50%;
+                margin: 0 5px  5px 5px;
+                background-size:cover;
+                background-position: center;
+                &:hover{
+                    transform: scale(1.1);
+                    transition: all 1s;        
+                }
+            }
+        }
+        .shoes{
+            width: 98%;
+            height: 50%;
+            margin: 5px 5px 0 10px;
+            background-size:cover;
+            &:hover{
+                transform: scale(1.1);
+                transition: all 1s;        
+            }
+        }
+   }
+   
+}
