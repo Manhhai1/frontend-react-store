@@ -48,43 +48,45 @@ function Products(props) {
                             <div className="content-sidebar">
                                 <h5>KHOẢNG GIÁ</h5>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="radio" value="" id="flexCheckDefault" name='sort-by' />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         Tất cả
                                     </label>
+                                    
+                                    
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                                    <input className="form-check-input" type="radio" value="" id="flexCheckChecked" name='sort-by' />
                                     <label className="form-check-label" for="flexCheckChecked">
                                         Nhỏ hơn 500,000₫
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                                    <input className="form-check-input" type="radio" value="" id="flexCheckChecked" name='sort-by' />
                                     <label className="form-check-label" for="flexCheckChecked">
                                         Từ 500,000₫ - 1,000,000₫
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                                    <input className="form-check-input" type="radio" value="" id="flexCheckChecked" name='sort-by'/>
                                     <label className="form-check-label" for="flexCheckChecked">
                                         Từ 1,000,000₫ - 2,000,000₫
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                                    <input className="form-check-input" type="radio" value="" id="flexCheckChecked" name='sort-by' />
                                     <label className="form-check-label" for="flexCheckChecked">
                                         Từ 2,000,000₫ - 2,500,000₫
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                                    <input className="form-check-input" type="radio" value="" id="flexCheckChecked" name='sort-by'/>
                                     <label className="form-check-label" for="flexCheckChecked">
                                         Từ 2,500,000₫ - 4,000,000₫
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                                    <input className="form-check-input" type="radio" value="" id="flexCheckChecked" name='sort-by'/>
                                     <label className="form-check-label" for="flexCheckChecked">
                                         Lớn hơn 4,000,000₫
                                     </label>
