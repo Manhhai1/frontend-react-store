@@ -1,0 +1,74 @@
+.container-products{
+    width: 100%;
+    .products{
+        margin-top: 30px;
+        padding-left: 7%;
+        padding-right: 7%;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        h5{
+            font-weight: 750;
+            margin-bottom: 20px;
+        }
+        .content-products{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+            align-items: center;
+            .item{
+                width: 32.5%;
+                height: 600px;
+                margin-bottom:20px;
+                line-height: 0.8;
+                b{
+                    color: red;
+                }
+                p{
+                    margin-top: 15px;
+                }
+                span{
+                    padding-bottom: 3px;
+                    &:hover{
+                        border-bottom: 1px solid #555;
+                        cursor: pointer;
+                    }
+                }
+               .boder-image{
+                        width: 100%;
+                        height: 550px;
+                        margin-bottom:10px;
+                        background-size: cover!important;
+                        background-position: center!important;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 0;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    
+               }
+               
+               
+            }
+        }
+    }
+    .banner{
+        margin-top: 50px;
+        height: 270px;
+        width: 100%!important;
+        background-size:cover!important ;
+        background-position: center;
+        background-repeat: no-repeat!important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h4{
+            font-size: 2em;
+            color: #fff;
+            font-weight: 750;
+        }
+    }
+}

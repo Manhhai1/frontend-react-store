@@ -48,7 +48,7 @@ function Footer(props) {
                     <h5>ĐĂNG KÝ NHẬN THÔNG TIN MỚI TỪ ADAMSTORE</h5>
                     <div className='register'>
                         <input type="text" className='form-control' placeholder='Nhập email của bạn' />
-                        <button type="button" class="btn btn-secondary">Đăng kí</button>
+                        <button type="button" className="btn btn-secondary">Đăng kí</button>
                     </div>
                 </div>
             </div>

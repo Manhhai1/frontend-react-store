@@ -8,7 +8,7 @@ function ContentHeader(props) {
     return (
         <div className='content-header'>
             <div className="back-home" onClick={()=>navigate('/home')}>
-                <img src={house} alt="" style={{ width: '20px' }} /><b>Trang chủ</b>/<p>{props.name}</p>
+                <img src={house} alt="" style={{ width: '20px' }} /><p>Trang chủ</p>/<b>{props.name}</b>
             </div>
             <div className="background-content" style={{ 'background': `url(${background})` }}></div>
             <h4 className='name-content'>{props.name}</h4>
