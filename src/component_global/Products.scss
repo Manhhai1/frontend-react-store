@@ -1,59 +1,164 @@
 .container-products{
     width: 100%;
     .products{
+
         margin-top: 30px;
-        padding-left: 7%;
-        padding-right: 7%;
+        
         width: 100%;
         align-items: center;
         text-align: center;
+     
+       .tieu-de{
+            position: absolute;
+            width: 100%!important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            z-index: 1;
+            height: 70px;
         h5{
             font-weight: 750;
             margin-bottom: 20px;
         }
-        .content-products{
+       }
+        .header-product{
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            width: 100%;
+            justify-content:space-between;
+            height: 70px;
+            padding-left : 9%;
+            padding-right: 9%;
             text-align: center;
             align-items: center;
-            .item{
-                width: 32.5%;
-                height: 600px;
-                margin-bottom:20px;
-                line-height: 0.8;
-                b{
-                    color: red;
+            p{
+                z-index: 10;
+                position: relative;
+                &:hover{
+                    cursor: pointer;
                 }
-                p{
-                    margin-top: 15px;
+            }
+            .sort{
+                display: flex;
+                width: 25%;
+                position: relative;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                z-index: 10;  
+                height: 70px;
+                .tieu-de-sap-xep{
+                    width: 35%;
+                    height: 30px;
                 }
-                span{
-                    padding-bottom: 3px;
-                    &:hover{
-                        border-bottom: 1px solid #555;
-                        cursor: pointer;
-                    }
+                .form-select{
+                    height: 35px;
+                    font-size: 0.9em;
+                    border-radius: 0;
+                    width: 65%;
+                    margin-bottom: 20px;
                 }
-               .boder-image{
-                        width: 100%;
-                        height: 550px;
-                        margin-bottom:10px;
-                        background-size: cover!important;
-                        background-position: center!important;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        margin: 0;
-                        &:hover{
-                            cursor: pointer;
-                        }
-                    
-               }
-               
-               
             }
         }
+        .content{
+            display: flex;
+            width: 100%;
+            .sidebar{
+                width: 1000px;
+                height: auto;
+                position: relative;
+                z-index: 10;
+                display: block;
+                position: relative;
+                .header-sidebar{
+
+                    .close-sidebar{
+                        width: 20px;
+                       // position: absolute;
+                       margin-bottom: 50px;
+                       margin-right: 5px;
+                    }
+                    width: 100%;
+                    justify-content: space-between;
+                    background-color:#f6f6f6;;
+                    display: flex;
+                    text-align: center;
+                    align-items: center;
+                    height: 80px;
+                    padding-left: 20px;
+                    float: left!important;
+                }
+                .content-sidebar{
+                    width: 200px;
+                    display: flex;
+                    flex-direction: column;
+                    h5{
+                        font-size: 0.9em;
+                        font-weight: 750;
+                        width: 160px;
+                        float: left!important;
+                        margin-top: 10px;
+                        margin-bottom: 15px;
+                    }
+                    .form-check{
+                        width: 300px;
+                        .form-check-label{
+                            float: left!important;
+                            margin-left: 10px;
+                        }
+                        .form-check-input{
+                            margin-left: 0px;
+                        }
+                    }
+                }
+                }
+            .content-products{
+                position: relative;
+                z-index: 0;
+                display: flex;
+                flex-wrap: wrap;
+                padding-left: 7%;
+                padding-right: 7%;
+                justify-content: space-between;
+                text-align: center;
+                align-items: center;
+                .item{
+                    width: 368px;
+                    height: 600px;
+                    margin-bottom:20px;
+                    line-height: 0.8;
+                    b{
+                        color: red;
+                    }
+                    p{
+                        margin-top: 15px;
+                    }
+                    span{
+                        padding-bottom: 3px;
+                        &:hover{
+                            border-bottom: 1px solid #555;
+                            cursor: pointer;
+                        }
+                    }
+                   .boder-image{
+                            width: 100%;
+                            height: 550px;
+                            margin-bottom:10px;
+                            background-size: cover!important;
+                            background-position: center!important;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin: 0;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        
+                   } 
+                }
+            }
+        }
+       
     }
     .banner{
         margin-top: 50px;
