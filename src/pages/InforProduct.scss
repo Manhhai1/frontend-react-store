@@ -1,0 +1,104 @@
+.product{
+    width: 100%;
+    .product-content{
+        margin-top: 30px;
+        padding-left: 7%;
+        padding-right: 7%;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        .img{
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            .img-product{
+                @media(max-width:800px){
+                    height: 250px;
+                }
+                width: 40%;
+                min-width: 200px;
+                height: 400px;
+                background-position: center!important;
+                background-size: cover!important;
+                margin: 5px;
+
+            }
+        }
+        .description{
+            margin-left:40px;
+            h5{
+                width: 65%;
+                font-weight: 700;
+            }
+            width: 40%;
+            .active-size{
+                background-color: orange;
+            }
+            .quantity{
+                height: 50px;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                margin: 0;
+                p{
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    justify-content: center;
+                    margin: 0;
+                    margin-right: 30px;
+                }
+                .count{
+                    margin: 20px;
+                }
+            }
+            .btn-click{
+                display: flex;
+                width: 100%;
+                text-align: center;
+                align-items: center;
+                h5{
+                    color: white;
+                    font-weight: 750;
+                    font-size: 0.8em;
+                    margin: 0;
+                }
+                p{
+                    color: white;
+                    font-size: 0.7em;
+                    margin: 0;
+                }
+                .btn-basket{
+                    height:60px;
+                    width: 160px;             
+                    background-color: #000;
+                    border-radius: 5%;
+                    margin-right: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    flex-direction: column;
+                   
+                    &:hover{
+                        transition: background-color 0.75s;
+                        background-color: #e60f0f;
+                      
+                    }
+                }
+                .btn-buy{
+                    height:80px;
+                    width: 150px;      
+                    background-color: #e60f0f;
+                    border-radius: 5%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    flex-direction: column;
+                }
+            }
+        }
+       
+    }
+}

@@ -4,13 +4,22 @@ import Footer from '../footer/Footer'
 import ContentHeader from '../account/ContentHeader';
 import Products from '../component_global/Products';
 import tuxedos from '../component_global/images/tuxedo.webp'
+import Products_Admin from '../component_global/Products_Admin';
 function BstSuitXutedo(props) {
-    let listParent =[tuxedos]
+    let listParent = [tuxedos]
+    let role = window.localStorage.getItem('role')
     return (
         <div className='bst-suit-tuxedo'>
             <Header></Header>
             <ContentHeader name={'BỘ SƯU TẬP SUIT TUXEDO 2023'}></ContentHeader>
-            <Products headerName={'BỘ SƯU TẬP SUIT TUXEDO 2023'} listParent={listParent}></Products>
+            {
+                role == 1 ? <Products_Admin listParent={listParent}
+                    headerName={'BỘ SƯU TẬP SUIT TUXEDO 2023'}
+                ></Products_Admin>
+                    : <Products listParent={listParent}
+                        headerName={'BỘ SƯU TẬP SUIT TUXEDO 2023'}
+                        ></Products>
+            }
             <Footer></Footer>
         </div>
     );

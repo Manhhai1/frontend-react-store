@@ -4,10 +4,13 @@
     z-index: 1;
     position: relative;
     cursor: pointer;
+    width: 100%;
+   
     .menu-ctmz{
         height: 60px;
         width: 100%;
         display: flex;
+        justify-content: space-between;
         text-align: center;
         align-items: center;
         padding-left: 20px;
@@ -24,6 +27,9 @@
             }
         }
         .list-menu-ctmz{
+            @media(max-width:800px){
+                display: none;
+            }
             list-style-type: none;
             width: 65%;
             display: flex;

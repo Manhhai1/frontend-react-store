@@ -1,0 +1,17 @@
+.user{
+    .content-user{
+        width: 100%;
+        margin-left: 7%;
+        margin-right: 7%;
+        margin-top: 20px;
+        min-height: 250px;
+        .content{
+            display: flex;
+            width: 100%;
+            .histories{
+                width: 50%;
+            }
+           
+        }
+    }
+}

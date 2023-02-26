@@ -3,11 +3,13 @@ import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import ContentHeader from '../account/ContentHeader';
 import Products from '../component_global/Products';
+import Products_Admin from '../component_global/Products_Admin';
 import thatlung from '../component_global/images/thatlung_parent.webp'
 import thatlung1 from '../component_global/images/thatlung_children.webp'
 function Buckle(props) {
     let listParent = [thatlung, thatlung, thatlung, thatlung, thatlung, thatlung]
-    let listChildren = [thatlung1,thatlung1,thatlung1,thatlung1,thatlung1,thatlung1]
+    let listChildren = [thatlung1, thatlung1, thatlung1, thatlung1, thatlung1, thatlung1]
+    let role = window.localStorage.getItem('role')
     return (
         <div className='buckle-adam'>
             <Header></Header>

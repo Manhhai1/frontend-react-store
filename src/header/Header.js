@@ -6,10 +6,9 @@ import search from './icons/seach.svg'
 import bag from './icons/bag.svg'
 import down from './icons/down.svg'
 import user from './icons/user.svg'
-import { useNavigate , Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 function Header() {
     const navigate = useNavigate()
-    const value = useContext(GlobalState)
     return (
         <div className='header-container-ctmz'>
             <div className="menu-ctmz">
@@ -27,7 +26,7 @@ function Header() {
                             <li onClick={() => navigate('/collections/bst-vest-cuoi')}><span>BST SUIT ADAM 2023</span></li>
                             <li onClick={() => navigate('/collections/bo-suu-tap-suit-tuxedo-2023')}><span>BST SUIT TUXEDO 2023</span></li>
                             <li onClick={() => navigate('/collections/quan-au-nam')}><span>QUẦN ÂU ADAM</span></li>
-                            <li onClick={() => navigate('/collections/giay-da-adam-store')}><span>GIÀY DA NAM</span></li>
+                           
                             <li onClick={() => navigate('/collections/so-mi-nam-adam-store')}><span>ÁO SƠ MI NAM</span></li>
                             <li onClick={() => navigate('/collections/ao-so-mi-coc-tay')}><span>ÁO SƠ MI NGẮN TAY NAM</span></li>
                             <li onClick={() => navigate('/collections/ao-khoac-adam')}><span>ÁO KHOÁC NAM</span></li>

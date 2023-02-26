@@ -1,7 +1,15 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
+import axios from 'axios'
+import { URL_BACKEND } from './constance'
 export const GlobalState = createContext()
 export const DataProvider = ({ children }) => {
-    return (<GlobalState.Provider value={"value in global"}>
+    const [token, setToken] = useState(false)
+    useEffect(() => {
+       
+    }, [])
+
+
+    return (<GlobalState.Provider value={'12'}>
         {children}
     </GlobalState.Provider>)
 } 

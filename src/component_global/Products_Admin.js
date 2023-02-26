@@ -2,19 +2,23 @@ import React, { Component } from 'react';
 import item from './images/suit_parent.webp'
 import item2 from './images/suit_children.webp'
 import banner from './images/banner.webp'
-import './Products.scss'
+import './Products_Admin.scss'
 import icon from '../header/icons/down.svg'
 import close from '../header/icons/close.svg'
+import plus from '../component_global/images/plus.svg'
 import axios from 'axios';
 import { URL_BACKEND } from '../constance';
 import PropTypes from 'prop-types';
+import ModalCreateProduct from '../pages/ModalUpdateProduct';
 
-class Products extends Component {
+class Products_Admin extends Component {
     constructor(props) {
         super(props);
         this.state = {
             openSideBar: false,
-            data: []
+            data: [],
+            openModal: false,
+            itemUpdate: {}
         }
     }
 
@@ -41,11 +45,18 @@ class Products extends Component {
             openSideBar: false
         })
     }
-  
+    setOpenModal = (e) => {
+        this.setState({
+            openModal: !this.state.openModal,
+            itemUpdate :e
+        })
+    }
+
     render() {
-        console.log(this.props.type)
         return (
-            <div className="container-products">
+
+            <div className="container-products-admin">
+            
                 <div className='products'>
                     <div className="tieu-de"> <h5>{this.props.headerName}</h5></div>
                     <div className="header-product">
@@ -119,6 +130,11 @@ class Products extends Component {
                             </div>
                         }
                         <div className="content-products">
+                            <div className="item">
+                                <div className="plus-item">
+                                    <img src={plus} alt="" />
+                                </div>
+                            </div>
                             {this.props.listParent.map((item, index) => {
                                 return (
 
@@ -131,9 +147,14 @@ class Products extends Component {
                                         </div>
                                         <p><span>ÁO VEST ADAM BEIGE SỮA - AV308</span></p>
                                         <b>2,750,000₫</b>
+                                        <div className="btn-product">
+                                            <button type="button" class="btn btn-secondary" onClick={()=>this.setOpenModal(item)}>Update</button>
+                                            <button type="button" class="btn btn-danger">Danger</button>
+                                        </div>
                                     </div>
                                 )
                             })}
+                            <ModalCreateProduct setOpenModal={this.state.openModal} openModal={this.setOpenModal} item ={this.state.itemUpdate}> </ModalCreateProduct>
                         </div>
                     </div>
 
@@ -144,8 +165,9 @@ class Products extends Component {
                 <div className="banner" style={{ 'background': `url(${banner})` }}>
                     <h4>ADAM STORE - THƯƠNG HIỆU VESTON MAY SẴN</h4>
                 </div>
+
             </div >
-        )
+        );
     }
 }
-export default Products;
+export default Products_Admin;
