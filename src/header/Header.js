@@ -6,9 +6,22 @@ import search from './icons/seach.svg'
 import bag from './icons/bag.svg'
 import down from './icons/down.svg'
 import user from './icons/user.svg'
+import logout from './icons/logout.svg'
 import { useNavigate } from 'react-router-dom'
-function Header() {
+import axios from 'axios';
+import { URL_BACKEND } from '../constance';
+import Basket from '../mainpage/Basket';
+function Header(props) {
+    const [login, setLogin] = useState(window.localStorage.getItem('firstLogin'))
+    const [name, setName] = useState(window.localStorage.getItem('firstname'))
     const navigate = useNavigate()
+    let Logout = async () => {
+        await axios.get(`${URL_BACKEND}/user/logout`)
+        localStorage.setItem('firstLogin', false)
+        localStorage.setItem('role', 0)
+        navigate('/login')
+    }
+  
     return (
         <div className='header-container-ctmz'>
             <div className="menu-ctmz">
@@ -26,7 +39,7 @@ function Header() {
                             <li onClick={() => navigate('/collections/bst-vest-cuoi')}><span>BST SUIT ADAM 2023</span></li>
                             <li onClick={() => navigate('/collections/bo-suu-tap-suit-tuxedo-2023')}><span>BST SUIT TUXEDO 2023</span></li>
                             <li onClick={() => navigate('/collections/quan-au-nam')}><span>QUẦN ÂU ADAM</span></li>
-                           
+
                             <li onClick={() => navigate('/collections/so-mi-nam-adam-store')}><span>ÁO SƠ MI NAM</span></li>
                             <li onClick={() => navigate('/collections/ao-so-mi-coc-tay')}><span>ÁO SƠ MI NGẮN TAY NAM</span></li>
                             <li onClick={() => navigate('/collections/ao-khoac-adam')}><span>ÁO KHOÁC NAM</span></li>
@@ -54,8 +67,13 @@ function Header() {
                 <div className="left-header">
                     <div className="contact mg">Liên hệ</div>
                     <div className="search mg">Tìm kiếm<img src={search} alt="" style={{ width: '20px', marginLeft: '3px' }} /></div>
-                    <div className="user mg"><img src={user} alt="" style={{ width: '20px' }} onClick={() => navigate('/login')} /></div>
-                    <div className="cart mg"><img src={bag} alt="" style={{ width: '20px' }} /></div>
+                    {login != '' && login == 'true' ? name : ''}
+                    {
+                        login != '' && login == 'false' ? <div className="user mg"><img src={user} alt="" style={{ width: '20px' }} onClick={() => navigate('/login')} /></div> :
+                            <div className="user mg"><img src={logout} alt="" style={{ width: '20px' }} onClick={() => Logout()} /></div>
+                    }
+
+                    <div className="cart mg" onClick={() => navigate('/basket')}><img src={bag} alt="" style={{ width: '20px' }} /><GlobalState>{({ sum }) => <b>({sum})</b>}</GlobalState></div>
                 </div>
             </div>
         </div>

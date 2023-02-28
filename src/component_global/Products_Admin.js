@@ -9,6 +9,8 @@ import plus from '../component_global/images/plus.svg'
 import axios from 'axios';
 import { URL_BACKEND } from '../constance';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import ModalCreateProduct from '../pages/ModalUpdateProduct';
 
 class Products_Admin extends Component {
@@ -18,12 +20,16 @@ class Products_Admin extends Component {
             openSideBar: false,
             data: [],
             openModal: false,
-            itemUpdate: {}
+            itemUpdate: {},
+            sort: '',
+            price: '',
+            type: ''
         }
     }
 
     async componentDidMount() {
-        let data = await axios.get(`${URL_BACKEND}/api/products`);
+        let data = await axios.get(`${URL_BACKEND}/api/products?page=1&limit=6&type[regex]=${this.props.type}`);
+        console.log(data)
         this.setState({
             data: data.data
         })
@@ -48,15 +54,20 @@ class Products_Admin extends Component {
     setOpenModal = (e) => {
         this.setState({
             openModal: !this.state.openModal,
-            itemUpdate :e
+            itemUpdate: e
         })
     }
+    handleClickViewProduct = () => {
 
+        this.props.history.push("/home")
+        alert(1)
+    }
     render() {
+
         return (
 
             <div className="container-products-admin">
-            
+
                 <div className='products'>
                     <div className="tieu-de"> <h5>{this.props.headerName}</h5></div>
                     <div className="header-product">
@@ -132,29 +143,35 @@ class Products_Admin extends Component {
                         <div className="content-products">
                             <div className="item">
                                 <div className="plus-item">
-                                    <img src={plus} alt="" />
+                                    <Link to='/product/create-product'><img src={plus} alt="" /></Link>
+
                                 </div>
                             </div>
-                            {this.props.listParent.map((item, index) => {
+                            {this.state.data && this.state.data.length && this.state.data.map((item, index) => {
+                                if (!item.images[1]) item.images[1] = item.images[0]
                                 return (
 
-                                    <div className="item" key={index}>
-                                        <div className="boder-image" style={{ 'background': `url(${item})` }}
-                                            onMouseOut={(e) => this.handleOnMouseMove(e, item)}
-                                            onMouseOver={(e) => this.handleOnMouseOver(e, this.props.listChildren[index])}
-                                        >
-                                            <div className="item-image" ></div>
-                                        </div>
-                                        <p><span>ÁO VEST ADAM BEIGE SỮA - AV308</span></p>
-                                        <b>2,750,000₫</b>
+                                    <div className="item" key={index} >
+                                        {
+                                            item.images[0] && <Link to={`/product/${item._id}`}>
+                                                <div className="boder-image" style={{ 'background': `url(${item.images[0].url})` }}
+                                                    onMouseOut={(e) => this.handleOnMouseMove(e, item.images[0].url)}
+                                                    onMouseOver={(e) => this.handleOnMouseOver(e, item.images[1].url)}
+                                                >
+                                                    <div className="item-image" ></div>
+                                                </div>
+                                            </Link>
+                                        }
+                                        <p><span>{item.title}</span></p>
+                                        <b>{item.price}₫</b>
                                         <div className="btn-product">
-                                            <button type="button" class="btn btn-secondary" onClick={()=>this.setOpenModal(item)}>Update</button>
-                                            <button type="button" class="btn btn-danger">Danger</button>
+                                            <button type="button" class="btn btn-secondary" onClick={() => this.setOpenModal(item)}>Update</button>
+                                            <button type="button" class="btn btn-danger">Delete</button>
                                         </div>
                                     </div>
                                 )
                             })}
-                            <ModalCreateProduct setOpenModal={this.state.openModal} openModal={this.setOpenModal} item ={this.state.itemUpdate}> </ModalCreateProduct>
+                            <ModalCreateProduct setOpenModal={this.state.openModal} openModal={this.setOpenModal} item={this.state.itemUpdate}> </ModalCreateProduct>
                         </div>
                     </div>
 

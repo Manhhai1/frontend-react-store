@@ -8,19 +8,24 @@ import img1 from '../component_global/images/suit_parent.webp'
 import img2 from '../component_global/images/suit_children.webp'
 import plus from '../component_global/images/plus-solid.svg'
 import subtract from '../component_global/images/minus-.svg'
+import { withRouter } from 'react-router'
+import axios from 'axios';
+import { GlobalState } from '../GlobalState';
+import { URL_BACKEND } from '../constance';
 class InforProduct extends Component {
     constructor(props) {
         super(props);
         this.state = {
             item: {
-                title: 'ÁO VEST BEIGE HỌA TIẾT HERRINGBONE - AV326',
-                price: '2,950,000',
-                description: '',
+                title: '',
+                price: '',
+                descriptionMarkdown: '',
                 size: [48, 50, 52, 56],
-                type: 'VEST ADAM'
+                type: '',
+                images: []
             },
             count: 0,
-            size: []
+            size: ''
         }
     }
 
@@ -28,14 +33,24 @@ class InforProduct extends Component {
 
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        const id = window.location.href.split('/')[4]
+        let data = await axios.get(`${URL_BACKEND}/api/products?_id=${id}`)
         let copyItem = this.state.item
-        copyItem.title = 'ÁO VEST BEIGE HỌA TIẾT HERRINGBONE - AV326'
+        copyItem.title = data.data[0].title
+        copyItem.price = data.data[0].price
+        copyItem.descriptionMarkdown = data.data[0].descriptionMarkdown
+        copyItem.images = data.data[0].images
+        copyItem.type = data.data[0].type
+        console.log(copyItem.images)
         this.setState({
             item: copyItem
         })
     }
     handleClickSize = (e) => {
+        this.setState({
+            size: e.target.value
+        })
         let imposters = document.querySelectorAll(".btn-light");
         for (let i = 0; i < imposters.length; i++) {
             imposters[i].addEventListener("click", function () {
@@ -47,30 +62,38 @@ class InforProduct extends Component {
             });
         }
     }
+    handleAddBasket = () => {
+
+    }
     render() {
-        console.log(this.state)
         return (
             <div className='product'>
-                <Header></Header>
+                <Header add={this.state.count}></Header>
                 <ContentHeader name={this.state.item.title}></ContentHeader>
                 <div className="product-content">
                     <div className="img">
-                        <div className='img-product' style={{ 'background': `url(${img1})` }}></div>
-                        <div className='img-product' style={{ 'background': `url(${img2})` }}></div>
+                        {
+                            this.state.item && this.state.item.images.length > 0 && this.state.item.images.map((item, index) => {
+                                return (
+                                    <div className='img-product' style={{ 'background': `url(${item.url})` }}></div>
+                                )
+                            })
+
+                        }
                     </div>
                     <div className="description">
                         <h5>{this.state.item.title}</h5>
                         <p>{this.state.item.price}₫</p>
                         <p>Loại: {this.state.item.type}</p>
                         <div className="mota">
-                            <div dangerouslySetInnerHTML={{ __html: this.state.item.description }}>
+                            <div dangerouslySetInnerHTML={{ __html: this.state.item.descriptionMarkdown }}>
                             </div>
 
                         </div>
                         <p className='size'><p style={{ marginRight: '30px;' }}>Kích thước:</p>
                             {
                                 this.state.item.size.map((item, index) => {
-                                    return (<button type="button" onClick={(e) => this.handleClickSize(e)} className="btn btn-light">{item}</button>)
+                                    return (<button type="button" value={item} onClick={(e) => this.handleClickSize(e)} className="btn btn-light">{item}</button>)
                                 })
                             }
                         </p>
@@ -79,10 +102,14 @@ class InforProduct extends Component {
                             <div className='count'>{this.state.count}</div>
                             <img src={plus} style={{ 'width': '14px' }} alt="" onClick={() => this.setState({ count: this.state.count + 1 })} /></p>
                         <div className="btn-click">
-                            <div className="btn-basket">
-                                <h5>THÊM VÀO GIỎ</h5>
-                                <p>Giao hàng tận nơi toàn quốc</p>
-                            </div>
+                            <GlobalState>
+                                {({ addToCart }) => <div className="btn-basket" onClick={() => addToCart(this.state.item, this.state.count, this.state.size)}>
+                                    <h5>THÊM VÀO GIỎ</h5>
+                                    <p>Giao hàng tận nơi toàn quốc</p>
+                                </div>}
+
+                            </GlobalState>
+
                             <div className="btn-buy">
                                 <h5>MUA NGAY</h5>
                                 <p>Thêm nhiều ưu đãi hấp dẫn</p>

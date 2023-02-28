@@ -1,43 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Header from '../header/Header';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../footer/Footer';
+import Header from '../header/Header';
 import ContentHeader from './ContentHeader';
-import './Admin.scss'
-class Admin extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
+function Admin(props) {
+    let navigate = useNavigate()
+    useEffect(() => {
+        if (localStorage.getItem('firstLogin') == 'true') {
+            if (localStorage.getItem('role') != 1) navigate('/account')
         }
-
-    }
-
-    componentWillMount() {
-
-    }
-
-    componentDidMount() {
-
-    }
-
-
-    render() {
-        return (
-            <div className='admin'>
-                <Header name={"ADMIN"}></Header>
-                <ContentHeader name={'XIN CHÀO ADMIN'}></ContentHeader>
-                <div className="content-admin">
-                    <h5>Lịch sử đơn hàng</h5>
-                </div>
-                <Footer></Footer>
+        else navigate('/login')
+    })
+    return (
+        <div className='admin'>
+            <Header name={"ADMIN"}></Header>
+            <ContentHeader name={'XIN CHÀO ADMIN'}></ContentHeader>
+            <div className="content-admin">
+                <h5>Lịch sử đơn hàng</h5>
             </div>
-        );
-    }
+            <Footer></Footer>
+        </div>
+    );
 }
-
-Admin.propTypes = {
-
-};
 
 export default Admin;

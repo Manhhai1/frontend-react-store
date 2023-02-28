@@ -2,7 +2,7 @@
 import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, redirect } from "react-router-dom";
 import { DataProvider } from './GlobalState';
 import Home from './mainpage/Home';
 import Login from './account/Login';
@@ -24,22 +24,27 @@ import Admin from './account/Admin';
 import InforProduct from './pages/InforProduct';
 import ModalUpdateProduct from './pages/ModalUpdateProduct';
 import CreateProduct from './pages/CreateProduct';
+import Infor from './pages/InforProduct';
+import Basket from './mainpage/Basket';
+
 function App() {
   return (
     <DataProvider>
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route exact path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="/account" element={<User></User>}></Route>
         <Route path='/admin' element={<Admin></Admin>}></Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path='/user' element={<User></User>}></Route>
+        <Route path="/account" element={<User></User>} ></Route>
+       <Route path='/basket' element={<Basket></Basket>}></Route>
 
 
         <Route path='/product' >
-          <Route path=':id' element={<InforProduct></InforProduct>}></Route>
           <Route path='create-product' element={<CreateProduct></CreateProduct>}></Route>
         </Route>
+        <Route path='/product/:id' element={<Infor></Infor>}></Route>
         <Route path="/collections">
           <Route path='bst-vest-cuoi' element={<BstSuit></BstSuit>}></Route>
           <Route path='bo-suu-tap-suit-tuxedo-2023' element={<BstSuitXutedo></BstSuitXutedo>}></Route>
@@ -55,7 +60,9 @@ function App() {
           <Route path='sip-nam-2019' element={<Sip></Sip>}></Route>
         </Route>
       </Routes>
-    </DataProvider >
+    </DataProvider>
+
+
   );
 }
 

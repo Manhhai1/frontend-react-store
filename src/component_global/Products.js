@@ -7,6 +7,7 @@ import icon from '../header/icons/down.svg'
 import close from '../header/icons/close.svg'
 import axios from 'axios';
 import { URL_BACKEND } from '../constance';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Products extends Component {
@@ -14,12 +15,15 @@ class Products extends Component {
         super(props);
         this.state = {
             openSideBar: false,
-            data: []
+            data: [],
+            sort: '',
+            price: '',
+            type: ''
         }
     }
 
     async componentDidMount() {
-        let data = await axios.get(`${URL_BACKEND}/api/products`);
+        let data = await axios.get(`${URL_BACKEND}/api/products?page=1&limit=6&type[regex]=${this.props.type}`);
         this.setState({
             data: data.data
         })
@@ -41,9 +45,9 @@ class Products extends Component {
             openSideBar: false
         })
     }
-  
+
     render() {
-        console.log(this.props.type)
+        console.log(this.state.data)
         return (
             <div className="container-products">
                 <div className='products'>
@@ -119,18 +123,22 @@ class Products extends Component {
                             </div>
                         }
                         <div className="content-products">
-                            {this.props.listParent.map((item, index) => {
+                            {this.state.data.length > 0 && this.state.data.map((item, index) => {
                                 return (
 
-                                    <div className="item" key={index}>
-                                        <div className="boder-image" style={{ 'background': `url(${item})` }}
-                                            onMouseOut={(e) => this.handleOnMouseMove(e, item)}
-                                            onMouseOver={(e) => this.handleOnMouseOver(e, this.props.listChildren[index])}
-                                        >
-                                            <div className="item-image" ></div>
-                                        </div>
-                                        <p><span>ÁO VEST ADAM BEIGE SỮA - AV308</span></p>
-                                        <b>2,750,000₫</b>
+                                    <div className="item" key={index} >
+                                        {
+                                            item.images[0] && <Link to={`/product/${item._id}`}>
+                                                <div className="boder-image" style={{ 'background': `url(${item.images[0].url})` }}
+                                                    onMouseOut={(e) => this.handleOnMouseMove(e, item.images[0].url)}
+                                                    onMouseOver={(e) => this.handleOnMouseOver(e, item.images[1].url)}
+                                                >
+                                                    <div className="item-image" ></div>
+                                                </div>
+                                            </Link>
+                                        }
+                                        <p><span>{item.title}</span></p>
+                                        <b>{item.price}₫</b>
                                     </div>
                                 )
                             })}

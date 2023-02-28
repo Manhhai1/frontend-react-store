@@ -1,0 +1,37 @@
+.content{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    .table{
+        position: relative;
+        margin-top: 30px;
+        margin-bottom: 20px!important;
+        width: 90%!important;
+        float: 50% 50%; 
+       
+        td{
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+         
+    }
+    
+}
+.image{
+    width: 220px;
+    height: 320px;
+   background-position: center!important;
+   background-size: cover!important;
+}  
+.btn-thanhtoan{
+    float: right!important; 
+    margin-bottom: 30px!important;
+    width: 200px!important;
+    border-radius: 0!important;
+    background-color: #000!important;
+    font-weight: 700!important;
+    margin-right: 100px;
+}   

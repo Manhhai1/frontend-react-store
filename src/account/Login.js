@@ -24,6 +24,7 @@ function Login(props) {
             localStorage.setItem('firstLogin', true)
             localStorage.setItem('token', res.data.accessToken);
             localStorage.setItem('role', res.data.user.role);
+            localStorage.setItem('firstname',res.data.user.firstname)
             if (res.data.user.role == 1) {
                 navigate('/admin')
             }

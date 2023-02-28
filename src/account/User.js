@@ -4,15 +4,17 @@ import Header from '../header/Header';
 import ContentHeader from './ContentHeader';
 import { URL_BACKEND } from '../constance';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import './User.scss'
 function User(props) {
-    const  navigate = useNavigate()
-    if (!window.localStorage.firstLogin) navigate('/login')
+    const navigate = useNavigate()
     const [histories, setHistories] = useState([])
     const [user, setUser] = useState({ firstname: '', lastname: '' })
     let token = window.localStorage.getItem('token')
-
+   // 
+    useEffect(() => {
+        if (window.localStorage.firstLogin != 'true') navigate('/login')
+   })
     return (
         <div className='user'>
             <Header name={'TÀI KHOẢN'} ></Header>

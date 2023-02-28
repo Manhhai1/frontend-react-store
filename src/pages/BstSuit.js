@@ -10,20 +10,27 @@ function BstSuit(props) {
     let arrItems = [img, img, img, img, img, img]
     let arrItemChildren = [img1, img1, img1, img1, img1, img1]
     let role = window.localStorage.getItem('role')
+    let login = window.localStorage.getItem('firstLogin')
     console.log(role)
+    let setDisplay = () => {
+        if (role == 1 && login == 'true') return true
+        else return false
+    }
+    let check = setDisplay()
+    console.log(check)
     return (
         <div className='bst-suit'>
             <Header></Header>
             <ContentHeader name={'BỘ SƯU TẬP SUIT ADAM 2023'}></ContentHeader>
             {
-                role == 1 ? <Products_Admin listParent={arrItems}
-                    listChildren={arrItemChildren}
+                check == true ? <Products_Admin
+                    type={'bstsa2023'}
                     headerName={'BỘ SƯU TẬP SUIT ADAM 2023'}
                 ></Products_Admin>
-                    : <Products listParent={arrItems}
-                        listChildren={arrItemChildren}
+                    : <Products
+                        type={'bstsa2023'}
                         headerName={'BỘ SƯU TẬP SUIT ADAM 2023'}
-                        ></Products>
+                    ></Products>
             }
             <Footer></Footer>
         </div>
