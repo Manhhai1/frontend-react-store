@@ -57,10 +57,15 @@ class Products_Admin extends Component {
             itemUpdate: e
         })
     }
-    handleClickViewProduct = () => {
-
-        this.props.history.push("/home")
-        alert(1)
+    handleDeleteItem = async(id) => {
+        await axios.delete(`${URL_BACKEND}/api/products/${id}`, {
+            headers: { Authorization: localStorage.getItem('token') }
+        });
+        let arr = this.state.data
+        arr = arr.filter(item => item._id !== id)
+        this.setState({
+            data: arr
+        })
     }
     render() {
 
@@ -166,7 +171,7 @@ class Products_Admin extends Component {
                                         <b>{item.price}₫</b>
                                         <div className="btn-product">
                                             <button type="button" class="btn btn-secondary" onClick={() => this.setOpenModal(item)}>Update</button>
-                                            <button type="button" class="btn btn-danger">Delete</button>
+                                            <button type="button" class="btn btn-danger" onClick={() => this.handleDeleteItem(item._id)}>Delete</button>
                                         </div>
                                     </div>
                                 )

@@ -133,6 +133,7 @@
                         width: 150px;
                         font-size: 0.5em;
                     }
+                    margin: 10px;
                     .plus-item{
                         justify-content: center;
                         display: flex;
@@ -207,7 +208,7 @@
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            margin: 0;
+                            margin: 10px;
                             &:hover{
                                 cursor: pointer;
                             }

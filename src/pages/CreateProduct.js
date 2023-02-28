@@ -65,29 +65,33 @@ class CreateProduct extends Component {
             const res = await axios.post(`${URL_BACKEND}/api/upload`, formData, {
                 headers: { 'content-type': 'multipart/form-data', Authorization: this.state.token }
             })
-            let images = this.state.images
-            images.push(res.data)
+            let copyimages = this.state.images
+            copyimages.push(res.data)
             this.setState({
-                ...images
+                images: copyimages
             })
+            console.log(this.state.images)
         })
     }
     handleSave = async () => {
         try {
             await this.UploadImg()
-            let title = this.state.title
-            let price = this.state.price
-            let descriptionMarkdown = this.state.descriptionMarkdown
-            let descriptionHTML = this.state.descriptionHTML
             let images = this.state.images
-            let type = this.state.type
-            await axios.post(`${URL_BACKEND}/api/products`, { title, price, descriptionHTML, descriptionMarkdown, type, images }, {
-                headers: { Authorization: this.state.token }
-            })
-            alert('Tạo sản phẩm thành công')
-            this.setState({
-                images: []
-            })
+            if (images.length > 0) {
+                let title = this.state.title
+                let price = this.state.price
+                let descriptionMarkdown = this.state.descriptionMarkdown
+                let descriptionHTML = this.state.descriptionHTML
+                console.log(images)
+                let type = this.state.type
+                await axios.post(`${URL_BACKEND}/api/products`, { title, price, descriptionHTML, descriptionMarkdown, type, images }, {
+                    headers: { Authorization: this.state.token }
+                })
+                alert('Tạo sản phẩm thành công')
+                this.setState({
+                    images: []
+                })
+            }
         } catch (error) {
 
         }
