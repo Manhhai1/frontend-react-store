@@ -70,7 +70,6 @@ class CreateProduct extends Component {
             this.setState({
                 images: copyimages
             })
-            console.log(this.state.images)
         })
     }
     handleSave = async () => {

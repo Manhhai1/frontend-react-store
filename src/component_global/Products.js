@@ -23,7 +23,7 @@ class Products extends Component {
     }
 
     async componentDidMount() {
-        let data = await axios.get(`${URL_BACKEND}/api/products?page=1&limit=6&type[regex]=${this.props.type}`);
+        let data = await axios.get(`${URL_BACKEND}/api/products?page=1&limit=20&type[regex]=${this.props.type}`);
         this.setState({
             data: data.data
         })
